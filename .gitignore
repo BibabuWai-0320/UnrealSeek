@@ -1,0 +1,19 @@
+# Generated local UE 5.8 SQLite database (~905MB, rebuilt locally from UE 5.8 Engine headers)
+data/*.db
+data/*.db.building
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+
+# Python caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unreal Engine 5.8 C++ API Reference</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <!-- Classic UE 4.7 Dark Top Header + Intelligent Fuzzy Search Bar -->
+  <header class="ue-topbar">
+    <div class="topbar-brand" id="btnHome" title="返回 UE 5.8 API 概览">
+      <div class="ue-logo">UE</div>
+      <div class="brand-text">
+        <span class="brand-title">UNREAL ENGINE <span class="ver-badge">5.8</span></span>
+        <span class="brand-sub">C++ API Reference</span>
+      </div>
+    </div>
+
+    <div class="search-wrapper" id="searchWrapper">
+      <div class="search-box">
+        <span class="search-icon" aria-hidden="true">&#128269;</span>
+        <input
+          type="text"
+          id="searchInput"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="中英文检索或粘贴代码，如：设置时间令牌、设置角色的local旋转与location、SpringArm、X->GetLocationandRotation..."
+        />
+        <button id="btnClearSearch" class="clear-btn hidden" title="清空">&#10005;</button>
+        <select id="searchKind" class="search-filter" title="符号类型过滤">
+          <option value="">全部类型</option>
+          <option value="function">函数 Function</option>
+          <option value="type">类/结构体/枚举</option>
+          <option value="class">类 Class</option>
+          <option value="struct">结构体 Struct</option>
+          <option value="enum">枚举 Enum</option>
+          <option value="property">属性 Property</option>
+        </select>
+        <label class="pub-toggle" title="仅显示官方可 #include 的 Public/Classes 公开头文件 API（取消勾选可查看引擎内部 Private 源码）">
+          <input type="checkbox" id="chkPublicOnly" checked />
+          <span>仅Public</span>
+        </label>
+        <button id="btnSearchGo" class="go-btn">检索定位</button>
+      </div>
+
+      <!-- Fuzzy Search Results Dropdown -->
+      <div id="searchDropdown" class="search-dropdown hidden">
+        <div id="searchParsedBar" class="parsed-bar hidden"></div>
+        <div id="searchResultsList" class="search-results-list"></div>
+        <div class="search-footer">
+          <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> 切换 · <kbd>Enter</kbd> 定位并查看 · <kbd>Esc</kbd> 关闭</span>
+          <span id="searchTiming"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topbar-actions">
+      <button id="btnThemeToggle" class="icon-btn" title="切换经典浅色 / 暗黑主题">
+        <span id="themeIcon">&#9789;</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Classic 2-Column Documentation Body -->
+  <div class="ue-layout">
+    <!-- Left Navigation Index Sidebar -->
+    <aside class="ue-sidebar" id="sidebar">
+      <div class="sidebar-tabs">
+        <button class="tab-btn active" data-mode="module" id="tabModule">模块目录索引</button>
+        <button class="tab-btn" data-mode="hierarchy" id="tabHierarchy">类继承树</button>
+      </div>
+      <div class="sidebar-toolbar">
+        <input
+          type="text"
+          id="treeFilterInput"
+          placeholder="筛选当前目录/模块/类..."
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button id="btnCollapseAll" class="mini-btn" title="折叠所有节点">折叠</button>
+      </div>
+      <div class="sidebar-tree" id="sidebarTree">
+        <div class="tree-loading">正在加载 UE 5.8 API 索引...</div>
+      </div>
+      <div class="sidebar-status" id="sidebarStatus">UE 5.8 API</div>
+    </aside>
+
+    <!-- Draggable Resizer -->
+    <div class="ue-splitter" id="splitter" title="拖动调整左侧索引栏宽度"></div>
+
+    <!-- Right API Reference Documentation Content Pane -->
+    <main class="ue-content" id="contentPane">
+      <div id="docContainer" class="doc-container">
+        <!-- Rendered dynamically by detail.js -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Copy Notification Toast -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="/detail.js"></script>
+  <script src="/tree.js"></script>
+  <script src="/search.js"></script>
+</body>
+</html>
